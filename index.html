@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tip and bill-split calculator. No ads, no sign-up." />
+  <title>Tipjar — tip calculator</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/icon-CvgGQpRc.svg" />
+  <script type="module" crossorigin src="./assets/index-B19FUFYs.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BZUXqFOv.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Tipjar</h1>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">
+      <span class="icon-light" aria-hidden="true">☀</span>
+      <span class="icon-dark"  aria-hidden="true">☾</span>
+    </button>
+  </header>
+
+  <main class="card">
+    <!-- Bill amount -->
+    <div class="field">
+      <label for="bill" class="label">Bill amount</label>
+      <div class="input-wrap">
+        <span class="currency-symbol" aria-hidden="true">$</span>
+        <input
+          type="number"
+          id="bill"
+          class="input"
+          inputmode="decimal"
+          placeholder="0.00"
+          min="0"
+          step="0.01"
+          aria-describedby="bill-err"
+          autocomplete="off"
+        />
+      </div>
+      <span class="error" id="bill-err" role="alert" aria-live="polite"></span>
+    </div>
+
+    <!-- Tip percentage -->
+    <div class="field">
+      <span class="label" id="tip-label">Tip</span>
+      <div class="preset-row" role="group" aria-labelledby="tip-label">
+        <button type="button" class="preset" data-tip="10" aria-pressed="false">10%</button>
+        <button type="button" class="preset" data-tip="15" aria-pressed="false">15%</button>
+        <button type="button" class="preset" data-tip="20" aria-pressed="false">20%</button>
+        <button type="button" class="preset preset-custom" data-tip="custom" aria-pressed="false">Custom</button>
+      </div>
+      <input
+        type="number"
+        id="tip"
+        class="input"
+        inputmode="decimal"
+        placeholder="15"
+        min="0"
+        max="100"
+        step="1"
+        aria-label="Custom tip percentage"
+        aria-describedby="tip-err"
+        autocomplete="off"
+        style="display:none"
+      />
+      <span class="error" id="tip-err" role="alert" aria-live="polite"></span>
+    </div>
+
+    <!-- Number of people -->
+    <div class="field">
+      <label for="people-input" class="label">Split between</label>
+      <div class="stepper" role="group" aria-label="Number of people">
+        <button type="button" class="stepper-btn" id="people-dec" aria-label="Fewer people">−</button>
+        <input
+          type="number"
+          id="people-input"
+          class="stepper-val"
+          inputmode="numeric"
+          min="1"
+          max="99"
+          step="1"
+          value="1"
+          aria-describedby="people-err"
+        />
+        <button type="button" class="stepper-btn" id="people-inc" aria-label="More people">+</button>
+      </div>
+      <span class="error" id="people-err" role="alert" aria-live="polite"></span>
+    </div>
+
+    <!-- Round up -->
+    <div class="field field-check">
+      <label class="check-label" for="roundup">
+        <input type="checkbox" id="roundup" class="check" />
+        <span class="check-custom" aria-hidden="true"></span>
+        Round up total
+      </label>
+    </div>
+  </main>
+
+  <!-- Results -->
+  <section class="results" aria-label="Calculation results" aria-live="polite" aria-atomic="true">
+    <div class="result-row">
+      <span class="result-label">Tip</span>
+      <span class="result-value" id="out-tip">—</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Total</span>
+      <span class="result-value" id="out-total">—</span>
+    </div>
+    <div class="result-row result-highlight">
+      <span class="result-label">Each person</span>
+      <span class="result-value" id="out-per">—</span>
+    </div>
+  </section>
+
+</body>
+</html>
