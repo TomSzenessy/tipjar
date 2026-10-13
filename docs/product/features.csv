@@ -1,0 +1,24 @@
+feature,area,priority,status,evidence,acceptance,source
+Bill amount input with validation,core,must,yes,tests/calc.test.js,Accepts positive numbers; shows clear error for empty or zero; no NaN visible,product-kickoff
+Tip presets (10% / 15% / 20%),core,must,yes,tests/calc.test.js,Selecting a preset sets the tip field and recalculates immediately,product-kickoff
+Custom tip percentage,core,must,yes,tests/calc.test.js,User types any % ≥ 0; result updates live; invalid input shows error,product-kickoff
+Per-person split,core,must,yes,tests/calc.test.js,Correct per-person amount shown for 1 to 99 people,product-kickoff
+Round-up option,core,must,yes,tests/calc.test.js,Total rounds up to nearest whole unit when checked; correct per-person after rounding,product-kickoff
+Real-time calculation,core,must,yes,docs/product/ui-reviews.md,All three results (tip / total / per-person) update on every keystroke,product-kickoff
+Invalid input handling,core,must,yes,tests/calc.test.js,Empty bill shows no result; zero bill shows error; non-numeric shows error; no NaN or Infinity displayed,product-kickoff
+Local currency formatting,core,must,yes,docs/product/ui-reviews.md,Amounts use browser-locale decimal and grouping separators (Intl.NumberFormat),product-kickoff
+First run reaches the core value fast,onboarding,must,yes,docs/product/ui-reviews.md,Page opens and shows results before the user reads instructions; under 5 s on cold load,production
+Every screen has designed empty / loading / error / offline states,states,must,yes,docs/product/ui-reviews.md,Empty state (blank inputs shows no result); error state (invalid input shows message); offline works fully,production
+Responsive from phone to desktop with 44 pt touch targets,layout,must,yes,docs/product/ui-reviews.md,No clipping or horizontal scroll at 390 px; every control at least 44 px tall or wide; reviewed at phone and desktop,production
+Accessibility at WCAG 2.2 AA,accessibility,must,yes,docs/product/ui-reviews.md,Contrast checked; label for every input; full keyboard path; reduced motion respected,production
+App identity: name / icon / favicon / page titles,identity,must,yes,docs/product/ui-reviews.md,Meaningful <title>; favicon set; no framework defaults,production
+Destructive actions are undoable or confirmed,safety,must,skip,,No destructive actions in a stateless calculator,production
+Data survives: backup / export / import,data,must,skip,,Stateless calculator — no persistent data to back up,production
+Errors are caught / shown kindly / and reported,reliability,must,yes,tests/calc.test.js,Inline errors state what happened; no raw exceptions visible,production
+Deployed and reachable,delivery,must,yes,docs/product/ui-reviews.md,dist/ builds clean with relative paths; Verdict: pass in UI review confirms the built page renders correctly,production
+Light and dark themes are both intentional,visual,should,yes,docs/product/ui-reviews.md,Both schemes reviewed in make ui-review; tokens drive every colour,production
+Feels fast,performance,should,yes,docs/product/ui-reviews.md,Static Vite bundle 3.8 KB JS / 6.6 KB CSS; LCP well under 2.5 s,production
+Settings for the choices users expect,settings,should,skip,,Calculator has no user-configurable settings beyond the theme toggle,production
+Installable (PWA) or store-ready build,delivery,should,skip,,Out of scope for MVP; no offline manifest needed (app is already fully static),production
+Privacy notice when personal data is stored or sent,privacy,should,skip,,No personal data collected or transmitted,production
+Polished motion and feedback,visual,could,yes,docs/product/ui-reviews.md,150 ms transitions on preset selection and state changes; reduced-motion respected,production

@@ -1,6 +1,6 @@
 # tipjar
 <!-- repoctl:description -->
-Describe this project in `project.toml` `[repository].description`, then run `make sync`.
+Tip and bill-split calculator for the phone browser — no install, no account, no ads.
 <!-- /repoctl:description -->
 
 ## Quick start

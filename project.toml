@@ -4,7 +4,7 @@
 schema = 1
 name = "tipjar"
 kind = "web"
-phase = "development"
+phase = "private-preview"
 # The root LICENSE file is authoritative; this SPDX label is metadata, not proof
 # that the text matches it. Replace both deliberately.
 license = "MIT"
@@ -19,7 +19,7 @@ github = ""
 infrastructure_paths = []
 # Single source for the README description block and the GitHub repository
 # metadata (`make sync` renders the README; `make github-sync` applies GitHub).
-description = ""
+description = "Tip and bill-split calculator for the phone browser — no install, no account, no ads."
 topics = []
 is_template = false
 
@@ -33,7 +33,7 @@ prune = []
 records = { "VISION.md" = "sha256:54cd11f15fea92efb8536336450fa30a5073563d72b73c8ead995b61e03a755b", "docs/STACK-DECISION.md" = "sha256:477676bd70f6eb7c05c5449ec13e2889142e127eafc8020daba519f19dfc0722" }
 
 [vision]
-status = "pending"
+status = "accepted"
 record = "VISION.md"
 stack_decision = "docs/STACK-DECISION.md"
 
@@ -153,12 +153,20 @@ legal_document_paths = []
 # exists, then give it an owner, a quality oracle, and evidence-producing checks.
 
 [[surfaces]]
-id = "template-bootstrap"
+id = "app"
 path = "."
-kind = "template"
-status = "planned"
-# Replace this bootstrap declaration with the first real product surface.
-verification = []
+kind = "web"
+status = "active"
+owner = "trial-owner"
+quality_oracle = "Vitest unit tests (npm test) plus make ui-review visual review at phone and desktop"
+critic_evidence = []
+extra_paths = ["index.html", "src", "tests", "vite.config.js", "package.json"]
+verification = [["npm", "test"], ["npm", "run", "build"]]
+
+[surfaces.preview]
+command = ["npm", "run", "dev", "--", "--port", "{port}", "--strictPort"]
+url = "http://localhost:{port}"
+routes = ["/"]
 [[skills]]
 package = "Jakeschincariol/replica-skill@product-recon"
 pack = "product"
